@@ -18,14 +18,31 @@
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header" data-site-header>
   <div class="shell header-inner">
-    <a class="brand" href="index.html" aria-label="Development Engineering home"><img class="logo-img" src="assets/images/deveng-logo.png" alt="DevEng.org"></a>
+    <a class="brand" href="index.html" aria-label="DevEng.org home"><img src="assets/images/deveng-logo.png" alt="DevEng.org"></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle><span></span><span></span><span></span><span class="screen-reader-text">Toggle navigation</span></button>
-    <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-menu><ul class="site-menu">
-<li><a href="author.html">The Author</a></li>
-<li><a href="books.html">Books by B. Amadei</a></li>
-<li><a href="common-ground-solutions-center.html">Common Ground Solutions Center</a></li>
-<li><a href="index.html#contact">Contact</a></li>
-</ul></nav>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-menu>
+      <ul class="site-menu">
+        <li><a href="author.html">The Author</a></li>
+        <li class="has-submenu">
+          <div class="menu-parent-row"><a href="books.html">Books by B. Amadei</a><button class="submenu-toggle" type="button" aria-expanded="false" aria-label="Show Books by B. Amadei submenu" data-submenu-toggle><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5"/></svg></button></div>
+          <ul class="sub-menu">
+            <li><a href="book-sustainable-human-development.html">Engineering for Sustainable Human Development</a></li>
+            <li><a href="book-community-development-projects.html">A Systems Approach to Modeling Community Development Projects</a></li>
+            <li><a href="book-water-energy-land-food.html">A Systems Approach to Modeling the Water-Energy-Land-Food Nexus</a></li>
+            <li><a href="book-peace-sustainability-climate.html">Navigating the complexity across the peace-sustainability-climate security nexus</a></li>
+            <li><a href="book-engineering-peace-diplomacy.html">Engineering for Peace and Diplomacy</a></li>
+          </ul>
+        </li>
+        <li><a href="common-ground-solutions-center.html">Common Ground Solutions Center</a></li>
+        <li class="menu-search-item"><button class="menu-search-toggle" type="button" aria-label="Search DevEng.org" aria-expanded="false" aria-controls="site-search" data-search-toggle><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button></li>
+      </ul>
+    </nav>
+    <div class="site-search-panel" id="site-search" aria-hidden="true" data-search-panel>
+      <form action="https://www.deveng.org/" method="get" role="search">
+        <label for="site-search-input">Search DevEng.org</label>
+        <div><input id="site-search-input" type="search" name="s" placeholder="Type your search…" autocomplete="off" data-search-input><button type="submit" aria-label="Submit search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button></div>
+      </form>
+    </div>
   </div>
 </header>
 <main id="main-content"><section class="inner-hero compact"><div class="shell"><p class="eyebrow">Fresh from blog</p><h1>WASH Priorities &amp; Approaches</h1></div></section><article class="section inner-content"><div class="shell article-shell prose"><div class="post-meta">Sep 13, 2014 • DevEng.org</div><p>Water, sanitation and hygiene are deeply connected. This short discussion asks why water often receives more attention than sanitation and hygiene and invites consideration of the most cost-effective ways to address WASH priorities together.</p><p><a class="button button-outline" href="index.html">Back to Home</a></p></div></article><section class="section contact-section" id="contact"><div class="contact-backdrop" aria-hidden="true"></div><div class="shell contact-grid">
@@ -34,16 +51,39 @@
 </div></section></main>
 <footer class="site-footer">
   <div class="shell footer-grid">
-    <div class="footer-brand"><a class="brand footer-logo" href="index.html"><img src="assets/images/deveng-logo.png" alt="DevEng.org"></a><p class="footer-tagline">Engineering with Soul</p></div>
-    <div><h2 class="footer-title">Contact</h2><address class="footer-contact"><strong>Bernard Amadei</strong><br>Common Ground Solutions LLC<br>2536 Columbine Circle<br>Lafayette, CO 80026<br><a href="tel:+13039298167">303-929-8167</a><br><a href="mailto:bamadei@gmail.com">bamadei@gmail.com</a><br><a href="https://www.deveng.org/">deveng.org</a></address></div>
-    <div><h2 class="footer-title">Quick links</h2><ul class="footer-links"><li><a href="index.html#what-is-development-engineering">What is Development Engineering?</a></li><li><a href="index.html#why-development-engineering">Why Development Engineering?</a></li><li><a href="books.html">Books by Bernard Amadei</a></li><li><a href="author.html">The Author</a></li><li><a href="common-ground-solutions-center.html">Common Ground Solutions Center</a></li></ul></div>
-    <div><h2 class="footer-title">Fresh from blog</h2><div class="footer-posts">
-<a class="footer-post" href="new-book-community-development.html"><span>New Book: A systems approach to modeling community development projects</span><small>Sep 21, 2015</small></a>
-<a class="footer-post" href="science-technology-engineering-for-peace.html"><span>Science, Technology &amp; Engineering for Peace</span><small>Sep 20, 2014</small></a>
-<a class="footer-post" href="role-of-engineers-in-development.html"><span>What is the role of engineers in development?</span><small>Sep 13, 2014</small></a>
-<a class="footer-post" href="wash.html"><span>WASH Priorities &amp; Approaches</span><small>Sep 13, 2014</small></a></div></div>
+    <div class="footer-brand">
+      <a class="brand footer-logo" href="index.html"><img src="assets/images/deveng-logo.png" alt="DevEng.org"></a>
+      <p class="footer-tagline">Engineering with Soul</p>
+      <nav class="footer-socials" aria-label="Social links"><a href="skype:bamadei" aria-label="Skype"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 4.5A7 7 0 0 1 18.5 10a5 5 0 0 1-6.5 7.7A7 7 0 0 1 5.5 6.2a4 4 0 0 1 1.7-1.7Z"/><path d="M9 14.6c.8.7 1.8 1 3 1 1.7 0 2.8-.7 2.8-1.8 0-1.2-1-1.6-3-2-1.9-.4-3.2-1.1-3.2-2.6 0-1.5 1.4-2.6 3.3-2.6 1.2 0 2.2.3 3 .9"/></svg></a><a href="https://www.deveng.org/" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v6h4v-6h3l1-4h-4V9c0-.7.3-1 1-1Z"/></svg></a><a href="https://www.deveng.org/#bamadei" aria-label="Twitter"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6.5c-.6.3-1.3.5-2 .6a3.5 3.5 0 0 0-6 3.2A10 10 0 0 1 4.8 6.7a3.5 3.5 0 0 0 1.1 4.7c-.5 0-1-.2-1.5-.4 0 1.7 1.2 3.1 2.8 3.4-.5.2-1 .2-1.5.1.5 1.4 1.8 2.4 3.3 2.4A7 7 0 0 1 4.6 18H4a9.9 9.9 0 0 0 5.4 1.6c6.5 0 10-5.4 10-10v-.5c.7-.5 1.3-1.1 1.8-1.8-.6.3-1.3.5-2 .6.7-.4 1.3-1.1 1.6-2-.7.4-1.4.7-2.2.8A3.5 3.5 0 0 0 20 6.5Z"/></svg></a></nav>
+    </div>
+    <div>
+      <h2 class="footer-title">Contact</h2>
+      <address class="footer-contact"><strong>Bernard Amadei</strong><br>Common Ground Solutions LLC<br>2536 Columbine Circle<br>Lafayette, CO 80026<br><a href="tel:+13039298167">303-929-8167</a><br><a href="mailto:bamadei@gmail.com">bamadei@gmail.com</a><br><a href="https://www.deveng.org/">deveng.org</a></address>
+    </div>
+    <div>
+      <h2 class="footer-title">Quick links</h2>
+      <ul class="footer-links">
+        <li><a href="index.html#what">What is Development Engineering?</a></li>
+        <li><a href="index.html#why">Why Development Engineering?</a></li>
+        <li><a href="books.html">Books by Bernard Amadei</a></li>
+        <li><a href="author.html">The Author</a></li>
+        <li><a href="common-ground-solutions-center.html">Common Ground Solutions Center</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-title">Fresh from blog</h2>
+      <div class="footer-posts">
+        <a class="footer-post" href="new-book-community-development.html"><span>New Book: A systems approach to modeling community development projects</span><small>Sep 21, 2015</small></a>
+        <a class="footer-post" href="science-technology-engineering-for-peace.html"><span>Science, Technology &amp; Engineering for Peace</span><small>Sep 20, 2014</small></a>
+        <a class="footer-post" href="role-of-engineers-in-development.html"><span>What is the role of engineers in development?</span><small>Sep 13, 2014</small></a>
+        <a class="footer-post" href="wash.html"><span>WASH Priorities &amp; Approaches</span><small>Sep 13, 2014</small></a>
+      </div>
+    </div>
   </div>
-  <div class="shell footer-bottom"><span>&copy; 2026 DevEng.org.</span><a href="index.html">deveng.org</a></div>
+  <div class="shell footer-bottom">
+    <span>&copy; 2026 DevEng.org. All rights reserved.</span>
+    <a href="index.html">deveng.org</a>
+  </div>
 </footer>
 <script src="assets/js/main.js" defer></script>
 </body></html>
