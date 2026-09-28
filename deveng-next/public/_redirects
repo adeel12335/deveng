@@ -1,0 +1,26 @@
+# Old static .html URLs -> clean routes. 301 = permanent, so search engines
+# move the ranking across instead of treating the new URL as a new page.
+/index.html                                 /                                                    301
+/author.html                                /author/                                             301
+/books.html                                 /books/                                              301
+/common-ground-solutions-center.html        /common-ground-solutions-center/                     301
+
+/book-sustainable-human-development.html    /books/engineering-for-sustainable-human-development/ 301
+/book-community-development-projects.html   /books/modeling-community-development-projects/       301
+/book-water-energy-land-food.html           /books/water-energy-land-food-nexus/                  301
+/book-peace-sustainability-climate.html     /books/peace-sustainability-climate-security/         301
+/book-engineering-peace-diplomacy.html      /books/engineering-for-peace-and-diplomacy/           301
+
+/new-book-community-development.html        /blog/new-book-community-development/                301
+/science-technology-engineering-for-peace.html  /blog/science-technology-engineering-for-peace/  301
+/role-of-engineers-in-development.html      /blog/role-of-engineers-in-development/              301
+/wash.html                                  /blog/wash/                                          301
+
+# --- WordPress URLs -------------------------------------------------------
+# Add one line per indexed WordPress URL before cutover. Get the real list from
+# Google Search Console > Pages, or the current site's /sitemap_index.xml.
+# Example:
+# /what-is-development-engineering/          /#what                                               301
+
+# The WordPress search endpoint no longer exists on a static host.
+/?s=:term                                   /                                                    301
