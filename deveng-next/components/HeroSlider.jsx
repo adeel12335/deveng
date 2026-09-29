@@ -30,6 +30,7 @@ export default function HeroSlider() {
   const [manualPaused, setManualPaused] = useState(false);
   const slideCount = heroSlides.length;
   const paused = hoverPaused || manualPaused;
+  const upcoming = (active + 1) % slideCount;
 
   const goTo = useCallback((index) => {
     setActive((index + slideCount) % slideCount);
@@ -38,6 +39,14 @@ export default function HeroSlider() {
   const next = useCallback(() => {
     setActive((current) => (current + 1) % slideCount);
   }, [slideCount]);
+
+  // Flipping the loading attribute from lazy to eager does not reliably make a
+  // browser re-fetch an image that is already in the DOM, so decode the next
+  // one explicitly. By the time it fades in it is ready.
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = heroSlides[upcoming].src;
+  }, [upcoming]);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -73,7 +82,12 @@ export default function HeroSlider() {
                 alt={index === active ? slide.alt : ''}
                 fill
                 priority={index === 0}
-                sizes="100vw"
+                /* The next slide is fetched while this one is still showing;
+                   lazy-loading meant each 300-550KB image only started
+                   downloading as it faded in, so the crossfade ran against a
+                   blank frame. */
+                loading={index === 0 || index === active || index === upcoming ? 'eager' : 'lazy'}
+                sizes="(max-width: 900px) 100vw, 52vw"
                 style={{ objectPosition: slide.position }}
               />
             </figure>

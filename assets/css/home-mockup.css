@@ -111,9 +111,38 @@ body.home-mockup {
 /* Image-led editorial carousel hero. */
 .home-mockup .mock-hero { background: #fff; border-bottom: 1px solid var(--home-line); }
 .home-mockup .mock-hero-stage { position: relative; height: clamp(620px, calc(100svh - 94px), 720px); min-height: 620px; overflow: hidden; background: #fff; }
-.home-mockup .mock-hero-visual { position: absolute; inset: 0 0 0 36%; margin: 0; overflow: hidden; clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%); }
-.home-mockup .hero-slide { position: absolute; inset: 0; margin: 0; visibility: hidden; opacity: 0; transform: scale(1.035); transition: opacity .8s ease, transform 7s ease, visibility .8s ease; }
-.home-mockup .hero-slide.is-active { visibility: visible; opacity: 1; transform: scale(1); }
+.home-mockup .mock-hero-visual { position: absolute; inset: 0 0 0 36%; margin: 0; overflow: hidden; clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);;
+  /* Filled with a brand tone so the panel never flashes white in the moment
+     before the first slide paints. The slides cover it completely. */
+  background: linear-gradient(145deg, #0d3b2a, #06231a);
+}
+.home-mockup .hero-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  visibility: hidden;
+  opacity: 0;
+  /* Fade only. The zoom is an animation on the active slide, so the outgoing
+     one never has a 7s transform unwinding while the next one starts its own —
+     that overlap was the stutter at every swap. */
+  transition: opacity .8s ease, visibility 0s linear .8s;
+  will-change: opacity;
+}
+.home-mockup .hero-slide.is-active {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .8s ease, visibility 0s linear;
+}
+.hero-slide.is-active img { animation: hero-zoom 8s ease-out forwards; }
+/* Runs longer than the 6.5s autoplay so it always completes on screen. */
+@keyframes hero-zoom {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide.is-active img { animation: none; }
+  .hero-slide { transition: opacity .01ms; }
+}
 .home-mockup .hero-slide img { object-fit: cover; }
 .home-mockup .mock-hero-copy {
   position: absolute;
