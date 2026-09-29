@@ -31,7 +31,7 @@ img,svg{max-width:100%}
 .hero-thumbnail-image,.mock-author-photo,.mock-photo-card,.mock-bridge,
 .book-list-cover,.book-detail-cover{position:relative;overflow:hidden}
 .mock-hero-visual,.hero-slide{position:absolute;inset:0}
-.mock-hero-stage{height:620px}
+.mock-hero-stage{height:clamp(620px,calc(100svh - 94px),720px);min-height:620px}
 .mock-book-cover{aspect-ratio:1/1.42}
 .book-list-cover{aspect-ratio:2/3}
 .hero-thumbnail-image{aspect-ratio:1.75/1}
@@ -65,12 +65,26 @@ const BOOT_SCRIPT = `
     setTimeout(function(){el.hidden=true},400);
   };
   var ready=function(){
-    return getComputedStyle(document.documentElement)
-      .getPropertyValue('--css-ready').trim()==='1';
+    if(getComputedStyle(document.documentElement)
+        .getPropertyValue('--css-ready').trim()!=='1')return false;
+    // The custom property can read back a frame before the rest of the
+    // document has been laid out with the sheet, so also require something
+    // only the stylesheet produces: the header's sticky positioning.
+    var h=document.querySelector('.site-header');
+    return !!h&&getComputedStyle(h).position==='sticky';
+  };
+  var settle=function(){
+    // Wait for the webfont too: revealing before Inter swaps in means the
+    // headings reflow by a few pixels in front of the visitor.
+    var go=function(){
+      // Two frames: one for layout with the new sheet, one for it to paint.
+      requestAnimationFrame(function(){requestAnimationFrame(done)});
+    };
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(go,go)}else{go()}
   };
   var tries=0;
   (function poll(){
-    if(ready()||++tries>120)return done();
+    if(ready()||++tries>120)return settle();
     requestAnimationFrame(poll);
   })();
   window.addEventListener('load',done);
