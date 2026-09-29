@@ -28,7 +28,12 @@
    closed drawer added ~300px of sideways scroll on phones. `clip` (not
    `hidden`) clips without creating a scroll container, so the sticky header
    keeps working. */
-html { scroll-behavior: smooth; overflow-x: clip; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+  /* Read by the inline boot script to know this stylesheet is in effect. */
+  --css-ready: 1;
+}
 body {
   margin: 0;
   overflow-x: clip;
