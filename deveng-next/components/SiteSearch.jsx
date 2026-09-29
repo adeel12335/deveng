@@ -15,7 +15,7 @@ const MAX_RESULTS = 6;
  * script), so it does not exist while running `next dev` — the panel says so
  * rather than failing silently.
  */
-export default function SiteSearch({ open, inputRef }) {
+export default function SiteSearch({ open, inputRef, idPrefix = 'site-search' }) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [status, setStatus] = useState('idle'); // idle | searching | ready | unavailable
@@ -83,23 +83,23 @@ export default function SiteSearch({ open, inputRef }) {
   return (
     <form role="search" onSubmit={(e) => e.preventDefault()}>
       <div className="site-search-row">
-        <label htmlFor="site-search-input">Search DevEng.org</label>
+        <label htmlFor={`${idPrefix}-input`}>Search DevEng.org</label>
         <div className="site-search-field">
           <input
-            id="site-search-input"
+            id={`${idPrefix}-input`}
             ref={inputRef}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Type your search&hellip;"
             autoComplete="off"
-            aria-describedby="site-search-status"
+            aria-describedby={`${idPrefix}-status`}
           />
           <button type="submit" aria-label="Submit search"><Magnifier /></button>
         </div>
       </div>
 
-      <div className="site-search-results" id="site-search-status" aria-live="polite">
+      <div className="site-search-results" id={`${idPrefix}-status`} aria-live="polite">
         {message && <p className="site-search-note">{message}</p>}
         {shown.map((r) => (
           <Link className="site-search-hit" key={r.url} href={r.url}>

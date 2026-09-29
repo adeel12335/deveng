@@ -1,38 +1,16 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
 
 /**
- * Cross-page effects the stylesheet depends on: the `js`/`page-ready` classes,
- * scroll-reveal, and the floating action buttons. Re-runs on navigation so
- * newly mounted sections are observed too.
+ * The floating back-to-top and email buttons, shown once the visitor has
+ * scrolled a little way down.
+ *
+ * Scroll-reveal used to live here too, reaching into the document for
+ * `.reveal` elements; each one now observes itself via <Reveal>.
  */
 export default function SiteEffects() {
-  const pathname = usePathname();
   const [showActions, setShowActions] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.add('js');
-    requestAnimationFrame(() => document.body.classList.add('page-ready'));
-  }, []);
-
-  useEffect(() => {
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const targets = document.querySelectorAll('.reveal:not(.is-visible)');
-    if (reduced || !('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add('is-visible'));
-      return undefined;
-    }
-    const io = new IntersectionObserver(
-      (entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
-      }),
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
-    );
-    targets.forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setShowActions(window.scrollY > 520);

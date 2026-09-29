@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { quotes } from '@/lib/site';
 import { ChevronLeft, ChevronRight } from './icons';
+import Reveal from '@/components/Reveal';
 
 /** A stacked list on wide screens; a swipeable one-up carousel under 640px. */
 export default function QuoteCarousel() {
@@ -23,7 +24,7 @@ export default function QuoteCarousel() {
   }, []);
 
   return (
-    <div className="mock-quotes reveal reveal-up">
+    <Reveal className="mock-quotes" direction="up">
       <div className="mock-quote-track" ref={track}>
         {quotes.map((q) => (
           <blockquote key={q}><span>&ldquo;</span><p>{q}</p></blockquote>
@@ -38,6 +39,6 @@ export default function QuoteCarousel() {
           <ChevronRight />
         </button>
       </div>
-    </div>
+    </Reveal>
   );
 }

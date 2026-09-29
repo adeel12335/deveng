@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ContactSection from '@/components/ContactSection';
 import { books } from '@/lib/site';
+import { pageMetadata, clamp, bookJsonLd, JsonLd } from '@/lib/seo';
 
 // One template renders all five book pages; the static build had five files.
 export function generateStaticParams() {
@@ -13,7 +14,15 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const book = books.find((b) => b.slug === slug);
   if (!book) return {};
-  return { title: { absolute: book.metaTitle }, description: book.body[0] };
+  // Long academic titles ran past what a search result shows, and the full
+  // first paragraph ran to 400+ characters. Both are trimmed for the snippet.
+  return pageMetadata({
+    path: `/books/${book.slug}`,
+    title: clamp(`${book.shelfTitle ?? book.title} | Bernard Amadei`, 60),
+    description: clamp(book.blurb),
+    image: book.cover,
+    type: 'book',
+  });
 }
 
 export default async function BookPage({ params }) {
@@ -23,6 +32,7 @@ export default async function BookPage({ params }) {
 
   return (
     <>
+      <JsonLd data={bookJsonLd(book)} />
       <section className="inner-hero compact">
         <div className="shell">
           <Link className="hero-back-link" href="/books">← All books</Link>

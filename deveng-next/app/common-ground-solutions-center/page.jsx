@@ -1,9 +1,12 @@
 import ContactSection from '@/components/ContactSection';
+import { pageMetadata } from '@/lib/seo';
 
-export const metadata = {
-  title: { absolute: 'Common Ground Solutions Center | Development Engineering' },
-  description: 'Transformative, systemic and compassionate solutions for development and peace.',
-};
+export const metadata = pageMetadata({
+  path: '/common-ground-solutions-center',
+  title: 'Common Ground Solutions Center',
+  description:
+    'A consultancy and capacity-building platform for transformative, systemic and compassionate solutions across development, resilience and peace.',
+});
 
 export default function CommonGroundSolutionsCenterPage() {
   return (

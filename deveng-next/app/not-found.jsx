@@ -3,6 +3,8 @@ import Link from 'next/link';
 export const metadata = {
   title: { absolute: 'Page not found | Development Engineering' },
   description: 'The page you were looking for could not be found.',
+  // A 404 should never compete in the index.
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {

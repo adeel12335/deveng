@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { books } from '@/lib/site';
 import { ChevronLeft, ChevronRight } from './icons';
+import Reveal from '@/components/Reveal';
 
 /** Scroll-snap carousel below 900px; a plain five-up grid above it. */
 export default function BookShelf() {
@@ -46,7 +47,7 @@ export default function BookShelf() {
   };
 
   return (
-    <div className="mock-book-wrap reveal reveal-right">
+    <Reveal className="mock-book-wrap" direction="right">
       <button className="mock-carousel-btn prev" aria-label="Previous books" disabled={atStart} onClick={() => nudge(-1)}>
         <ChevronLeft />
       </button>
@@ -70,6 +71,6 @@ export default function BookShelf() {
       <button className="mock-carousel-btn next" aria-label="Next books" disabled={atEnd} onClick={() => nudge(1)}>
         <ChevronRight />
       </button>
-    </div>
+    </Reveal>
   );
 }

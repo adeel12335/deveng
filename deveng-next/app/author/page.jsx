@@ -1,14 +1,20 @@
 import Image from 'next/image';
 import ContactSection from '@/components/ContactSection';
+import { pageMetadata, profileJsonLd, JsonLd } from '@/lib/seo';
 
-export const metadata = {
-  title: { absolute: 'Bernard Amadei — The Author | Development Engineering' },
-  description: 'Bernard Amadei, author, changemaker and public speaker.',
-};
+export const metadata = pageMetadata({
+  path: '/author',
+  title: 'Bernard Amadei — The Author',
+  description:
+    'Bernard Amadei: Distinguished Professor Emeritus at CU Boulder, founding president of Engineers Without Borders-USA, author and public speaker.',
+  image: '/assets/images/bernard-amadei.png',
+  type: 'profile',
+});
 
 export default function AuthorPage() {
   return (
     <>
+      <JsonLd data={profileJsonLd()} />
       <section className="inner-hero author-hero">
         <div className="shell author-hero-grid">
           <div className="inner-hero-copy">

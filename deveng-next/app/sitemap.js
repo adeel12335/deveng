@@ -14,8 +14,10 @@ export default function sitemap() {
     ...books.map((b) => `/books/${b.slug}`),
     ...posts.map((p) => `/blog/${p.slug}`),
   ];
+  // Pages are exported with a trailing slash; the sitemap must match or every
+  // crawled URL costs a redirect hop.
   return routes.map((route) => ({
-    url: `${BASE}${route}`,
+    url: route === '/' ? `${BASE}/` : `${BASE}${route}/`,
     lastModified: new Date(),
     changeFrequency: route === '/' ? 'weekly' : 'monthly',
     priority: route === '/' ? 1 : 0.7,

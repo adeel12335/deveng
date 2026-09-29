@@ -122,7 +122,7 @@ export const posts = [
 
 export const nav = [
   { label: 'The Author', href: '/author' },
-  { label: 'Books by B. Amadei', href: '/books', children: books.map((b) => ({ label: b.title, href: `/books/${b.slug}` })) },
+  { label: 'Books by B. Amadei', href: '/books', children: books.slice(0, 4).map((b) => ({ label: b.title, href: `/books/${b.slug}` })) },
   { label: 'Common Ground Solutions Center', href: '/common-ground-solutions-center' },
 ];
 
@@ -149,21 +149,25 @@ export const heroSlides = [
     src: '/assets/images/hero-development-engineering-v2.webp',
     alt: 'Women collaborating on a community planning activity',
     position: '68% center',
+    label: 'People-Centered Solutions',
   },
   {
     src: '/assets/images/community-project-v2.webp',
     alt: 'Engineers and community members installing a water line together',
     position: '58% center',
+    label: 'Sustainable Infrastructure',
   },
   {
     src: '/assets/images/bridge-kenya-v2.webp',
     alt: 'A community-built suspension bridge crossing a river valley',
     position: '58% center',
+    label: 'Stronger Communities',
   },
   {
     src: '/assets/images/hero-slides/landscape-trees.webp',
     alt: 'Timber and woodland in a misty landscape',
     position: '64% center',
+    label: 'A More Peaceful World',
   },
 ];
 

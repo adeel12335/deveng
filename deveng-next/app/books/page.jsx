@@ -1,17 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ContactSection from '@/components/ContactSection';
+import Reveal from '@/components/Reveal';
 import { books } from '@/lib/site';
+import { pageMetadata, bookListJsonLd, JsonLd } from '@/lib/seo';
 
-export const metadata = {
-  title: { absolute: 'Books by Bernard Amadei | Development Engineering' },
+export const metadata = pageMetadata({
+  path: '/books',
+  title: 'Books by Bernard Amadei',
   description:
-    'Books exploring engineering for human development, systems thinking, resource nexuses, sustainability, climate security, peace and diplomacy.',
-};
+    'Five books on engineering for human development: systems thinking, the water-energy-land-food nexus, climate security, peace and diplomacy.',
+});
 
 export default function BooksPage() {
   return (
     <>
+      <JsonLd data={bookListJsonLd(books)} />
       <section className="inner-hero compact">
         <div className="shell">
           <h1>Books by Bernard Amadei</h1>
@@ -27,7 +31,7 @@ export default function BooksPage() {
         <div className="shell">
           <div className="books-grid">
             {books.map((book) => (
-              <article className="book-list-card reveal" key={book.slug}>
+              <Reveal as="article" className="book-list-card" key={book.slug}>
                 <Link className="book-list-cover" href={`/books/${book.slug}`}>
                   <Image src={book.cover} alt={book.title} width={258} height={396} sizes="(max-width: 700px) 108px, 190px" />
                 </Link>
@@ -36,7 +40,7 @@ export default function BooksPage() {
                   <p>{book.blurb}</p>
                   <Link className="text-link arrow-link" href={`/books/${book.slug}`}>View book <span>&rarr;</span></Link>
                 </div>
-              </article>
+              </Reveal>
             ))}
           </div>
         </div>

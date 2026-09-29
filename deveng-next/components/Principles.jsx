@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { principles } from '@/lib/principles';
+import Reveal from '@/components/Reveal';
 
 export default function Principles() {
   const [active, setActive] = useState(0);
   return (
-    <div className="mock-ps reveal reveal-up" aria-label="The five Ps of sustainability">
+    <Reveal className="mock-ps" direction="up" aria-label="The five Ps of sustainability">
       {principles.map((p, i) => (
         <button
           key={p.title}
@@ -20,6 +21,6 @@ export default function Principles() {
           <small>{p.note[0]}<br />{p.note[1]}</small>
         </button>
       ))}
-    </div>
+    </Reveal>
   );
 }

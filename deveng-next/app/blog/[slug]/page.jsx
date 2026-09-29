@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ContactSection from '@/components/ContactSection';
 import { posts, site } from '@/lib/site';
+import { pageMetadata, clamp, articleJsonLd, JsonLd } from '@/lib/seo';
 
 // One template renders every post; the static build had a file each.
 export function generateStaticParams() {
@@ -13,7 +14,12 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return {};
-  return { title: { absolute: `${post.title} | Development Engineering` }, description: post.body[0] };
+  return pageMetadata({
+    path: `/blog/${post.slug}`,
+    title: clamp(`${post.title} | DevEng.org`, 60),
+    description: clamp(post.body[0]),
+    type: 'article',
+  });
 }
 
 export default async function PostPage({ params }) {
@@ -23,6 +29,7 @@ export default async function PostPage({ params }) {
 
   return (
     <>
+      <JsonLd data={articleJsonLd(post)} />
       <section className="article-hero">
         <div className="shell article-hero-grid">
           <div className="article-heading">

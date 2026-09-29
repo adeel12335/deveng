@@ -1,4 +1,5 @@
 import ContactForm from './ContactForm';
+import Reveal from './Reveal';
 import { site } from '@/lib/site';
 
 /** The homepage band and the inner-page band share one component. */
@@ -8,14 +9,14 @@ export default function ContactSection({ variant = 'home' }) {
       <section className="mock-contact" id="contact">
         <div className="mock-contact-bg" />
         <div className="mock-shell mock-contact-grid">
-          <div className="mock-copy reveal reveal-left">
+          <Reveal className="mock-copy" direction="left">
             <h2>Contact Us</h2>
             <span className="mock-rule" />
             <p>Have a question, an idea to share, or an invitation for Bernard? Send us a message and we&rsquo;ll be glad to connect.</p>
-          </div>
-          <div className="mock-form-card reveal reveal-right">
+          </Reveal>
+          <Reveal className="mock-form-card" direction="right">
             <ContactForm variant="home" />
-          </div>
+          </Reveal>
         </div>
       </section>
     );

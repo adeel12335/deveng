@@ -6,24 +6,28 @@ import Principles from '@/components/Principles';
 import BookShelf from '@/components/BookShelf';
 import QuoteCarousel from '@/components/QuoteCarousel';
 import ContactSection from '@/components/ContactSection';
+import Reveal from '@/components/Reveal';
+import { pageMetadata, siteJsonLd, JsonLd } from '@/lib/seo';
 import { ArrowRight } from '@/components/icons';
 
-export const metadata = {
-  title: { absolute: 'Development Engineering | DevEng.org' },
+export const metadata = pageMetadata({
+  path: '/',
+  title: 'Development Engineering | DevEng.org',
   description:
-    'Using engineering knowledge and tools to work with people to build a more just, sustainable and peaceful world.',
-};
+    'Development Engineering applies engineering knowledge and tools alongside communities to build a more just, sustainable and peaceful world.',
+});
 
 export default function HomePage() {
   return (
     <>
       <BodyClass name="home-mockup" />
+      <JsonLd data={siteJsonLd()} />
 
       <HeroSlider />
 
       <section className="mock-section mock-what" id="what">
         <div className="mock-shell mock-two-col">
-          <div className="mock-copy reveal reveal-left">
+          <Reveal className="mock-copy" direction="left">
             <h2>What is Development Engineering?</h2>
             <span className="mock-rule" />
             <p>
@@ -33,8 +37,8 @@ export default function HomePage() {
             <a className="mock-btn mock-btn-green" href="#what-more">
               Learn More About Development Engineering <ArrowRight />
             </a>
-          </div>
-          <figure className="mock-photo-card reveal reveal-right">
+          </Reveal>
+          <Reveal as="figure" className="mock-photo-card" direction="right">
             <Image
               src="/assets/images/community-project-v2.webp"
               alt="Community members collaborating on an infrastructure project"
@@ -42,7 +46,7 @@ export default function HomePage() {
               height={1024}
               sizes="(max-width: 900px) 100vw, 56vw"
             />
-          </figure>
+          </Reveal>
         </div>
 
         <details className="mock-shell mock-more" id="what-more">
@@ -141,7 +145,7 @@ export default function HomePage() {
 
       <section className="mock-section mock-books" id="books">
         <div className="mock-shell">
-          <div className="mock-heading-row reveal reveal-left">
+          <Reveal className="mock-heading-row" direction="left">
             <div>
               <h2>Books by Bernard Amadei</h2>
               <span className="mock-rule" />
@@ -149,14 +153,14 @@ export default function HomePage() {
             <Link className="mock-btn mock-btn-outline" href="/books">
               View All Books <ArrowRight />
             </Link>
-          </div>
+          </Reveal>
           <BookShelf />
         </div>
       </section>
 
       <section className="mock-section mock-author" id="author">
         <div className="mock-shell mock-author-grid">
-          <div className="mock-copy reveal reveal-right">
+          <Reveal className="mock-copy" direction="right">
             <h2>Bernard Amadei</h2>
             <span className="mock-rule" />
             <h3>The Author</h3>
@@ -169,10 +173,10 @@ export default function HomePage() {
             <Link className="mock-btn mock-btn-green" href="/author">
               Learn More About Bernard Amadei <ArrowRight />
             </Link>
-          </div>
-          <figure className="mock-author-photo reveal reveal-left">
+          </Reveal>
+          <Reveal as="figure" className="mock-author-photo" direction="left">
             <Image src="/assets/images/bernard-amadei.png" alt="Bernard Amadei speaking" width={568} height={378} sizes="(max-width: 900px) 100vw, 34vw" />
-          </figure>
+          </Reveal>
           <QuoteCarousel />
         </div>
       </section>

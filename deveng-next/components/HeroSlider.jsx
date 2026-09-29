@@ -26,8 +26,10 @@ function SliderArrow({ direction, onClick }) {
 
 export default function HeroSlider() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [hoverPaused, setHoverPaused] = useState(false);
+  const [manualPaused, setManualPaused] = useState(false);
   const slideCount = heroSlides.length;
+  const paused = hoverPaused || manualPaused;
 
   const goTo = useCallback((index) => {
     setActive((index + slideCount) % slideCount);
@@ -51,11 +53,11 @@ export default function HeroSlider() {
       aria-labelledby="home-title"
       aria-roledescription="carousel"
       aria-label="Development Engineering highlights"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
+      onMouseEnter={() => setHoverPaused(true)}
+      onMouseLeave={() => setHoverPaused(false)}
+      onFocusCapture={() => setHoverPaused(true)}
       onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+        if (!event.currentTarget.contains(event.relatedTarget)) setHoverPaused(false);
       }}
     >
       <div className="mock-hero-stage">
@@ -79,6 +81,9 @@ export default function HeroSlider() {
         </div>
 
         <div className="mock-hero-copy">
+          <span className="hero-watermark" aria-hidden="true">
+            {String(active + 1).padStart(2, '0')}
+          </span>
           <div className="hero-copy-inner">
             <h1 id="home-title">Development<br />Engineering</h1>
             <span className="mock-rule" aria-hidden="true" />
@@ -91,37 +96,57 @@ export default function HeroSlider() {
             </a>
           </div>
 
-          <div className="hero-pagination" aria-label="Choose a hero image">
-            <span className="hero-counter" aria-hidden="true">
-              <strong>{String(active + 1).padStart(2, '0')}</strong>
-              <span>/</span>
-              {String(slideCount).padStart(2, '0')}
-            </span>
-            <span className="hero-progress" aria-hidden="true">
-              <span className="hero-progress-fill" key={active} />
-            </span>
-            <span className="hero-dots">
+          <div className="hero-navigation" aria-label="Hero slider controls">
+            <div className="hero-pagination">
+              <span className="hero-counter" aria-hidden="true">
+                <strong>{String(active + 1).padStart(2, '0')}</strong>
+                <span>/</span>
+                {String(slideCount).padStart(2, '0')}
+              </span>
+              <span className="hero-progress" aria-hidden="true">
+                <span className="hero-progress-fill" key={active} />
+              </span>
+              <button
+                className="hero-pause"
+                type="button"
+                aria-label={manualPaused ? 'Resume hero slideshow' : 'Pause hero slideshow'}
+                aria-pressed={manualPaused}
+                onClick={() => setManualPaused((value) => !value)}
+              >
+                {manualPaused ? (
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7 5 8 5-8 5Z" /></svg>
+                ) : (
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.5 5.2v9.6M13.5 5.2v9.6" /></svg>
+                )}
+              </button>
+              <div className="hero-inline-arrows">
+                <SliderArrow direction="previous" onClick={() => goTo(active - 1)} />
+                <SliderArrow direction="next" onClick={next} />
+              </div>
+            </div>
+
+            <div className="hero-thumbnails" aria-label="Choose a hero image">
               {heroSlides.map((slide, index) => (
                 <button
                   type="button"
-                  className={index === active ? 'is-active' : undefined}
+                  className={`hero-thumbnail${index === active ? ' is-active' : ''}`}
                   key={slide.src}
-                  aria-label={`Show hero image ${index + 1} of ${slideCount}`}
+                  aria-label={`Show slide ${index + 1}: ${slide.label}`}
                   aria-current={index === active ? 'true' : undefined}
                   onClick={() => goTo(index)}
-                />
+                >
+                  <span className="hero-thumbnail-image">
+                    <Image src={slide.src} alt="" fill sizes="112px" style={{ objectPosition: slide.position }} />
+                  </span>
+                  <span>{slide.label}</span>
+                </button>
               ))}
-            </span>
+            </div>
           </div>
         </div>
 
-        <div className="hero-arrows">
-          <SliderArrow direction="previous" onClick={() => goTo(active - 1)} />
-          <SliderArrow direction="next" onClick={next} />
-        </div>
-
         <p className="screen-reader-text" aria-live="polite">
-          Hero image {active + 1} of {slideCount}: {heroSlides[active].alt}
+          Hero image {active + 1} of {slideCount}: {heroSlides[active].label}. {heroSlides[active].alt}
         </p>
       </div>
     </section>

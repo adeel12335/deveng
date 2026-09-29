@@ -25,6 +25,7 @@ function HeaderContent({ pathname }) {
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
   const searchInput = useRef(null);
+  const mobileSearchInput = useRef(null);
 
   // The stylesheet keys the open states off body classes, as the static build did.
   useEffect(() => {
@@ -63,6 +64,13 @@ function HeaderContent({ pathname }) {
 
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`} data-site-header>
+      <button
+        className="nav-scrim"
+        type="button"
+        aria-label="Close navigation"
+        tabIndex={navOpen ? 0 : -1}
+        onClick={() => setNavOpen(false)}
+      />
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label={`${site.name} home`}>
           <Image src="/assets/images/deveng-logo-clean.png" alt={site.name} width={210} height={102} priority />
@@ -73,13 +81,26 @@ function HeaderContent({ pathname }) {
           type="button"
           aria-expanded={navOpen}
           aria-controls="primary-navigation"
-          onClick={() => setNavOpen((v) => !v)}
+          onClick={() => {
+            setSearchOpen(false);
+            setNavOpen((value) => !value);
+            setOpenSubmenu('/books');
+          }}
         >
           <span /><span /><span />
           <span className="screen-reader-text">Toggle navigation</span>
         </button>
 
         <nav className="primary-nav" id="primary-navigation" aria-label="Primary navigation">
+          <div className="mobile-nav-head">
+            <div className="mobile-nav-search">
+              <SiteSearch open={navOpen} inputRef={mobileSearchInput} idPrefix="mobile-nav-search" />
+            </div>
+            <button className="mobile-nav-close" type="button" aria-label="Close navigation" onClick={() => setNavOpen(false)}>
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+            </button>
+          </div>
           <ul className="site-menu">
             {nav.map((item) => {
               const current = isCurrent(pathname, item);
@@ -87,14 +108,14 @@ function HeaderContent({ pathname }) {
               if (!item.children) {
                 return (
                   <li key={item.href} className={current ? 'current-menu-item' : undefined}>
-                    <Link href={item.href} aria-current={normalize(pathname) === item.href ? 'page' : undefined}>{item.label}</Link>
+                    <Link href={item.href} aria-current={normalize(pathname) === item.href ? 'page' : undefined} onClick={() => setNavOpen(false)}>{item.label}</Link>
                   </li>
                 );
               }
               return (
                 <li key={item.href} className={`has-submenu${current ? ' current-menu-item' : ''}${open ? ' is-open' : ''}`}>
                   <div className="menu-parent-row">
-                    <Link href={item.href} aria-current={normalize(pathname) === item.href ? 'page' : undefined}>{item.label}</Link>
+                    <Link href={item.href} aria-current={normalize(pathname) === item.href ? 'page' : undefined} onClick={() => setNavOpen(false)}>{item.label}</Link>
                     <button
                       className="submenu-toggle"
                       type="button"
@@ -108,7 +129,7 @@ function HeaderContent({ pathname }) {
                   <ul className="sub-menu">
                     {item.children.map((child) => (
                       <li key={child.href}>
-                        <Link href={child.href} aria-current={normalize(pathname) === child.href ? 'page' : undefined}>{child.label}</Link>
+                    <Link href={child.href} aria-current={normalize(pathname) === child.href ? 'page' : undefined} onClick={() => setNavOpen(false)}>{child.label}</Link>
                       </li>
                     ))}
                   </ul>
@@ -131,10 +152,8 @@ function HeaderContent({ pathname }) {
           </ul>
         </nav>
 
-        <Link className="header-contact" href="/#contact">Contact</Link>
-
         <div className="site-search-panel" id="site-search" aria-hidden={!searchOpen} data-search-panel>
-          <SiteSearch open={searchOpen} inputRef={searchInput} />
+          <SiteSearch open={searchOpen} inputRef={searchInput} idPrefix="desktop-site-search" />
         </div>
       </div>
     </header>

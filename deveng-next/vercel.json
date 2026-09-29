@@ -1,0 +1,39 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/author.html", "destination": "/author", "permanent": true },
+    { "source": "/books.html", "destination": "/books", "permanent": true },
+    { "source": "/common-ground-solutions-center.html", "destination": "/common-ground-solutions-center", "permanent": true },
+
+    { "source": "/book-sustainable-human-development.html", "destination": "/books/engineering-for-sustainable-human-development", "permanent": true },
+    { "source": "/book-community-development-projects.html", "destination": "/books/modeling-community-development-projects", "permanent": true },
+    { "source": "/book-water-energy-land-food.html", "destination": "/books/water-energy-land-food-nexus", "permanent": true },
+    { "source": "/book-peace-sustainability-climate.html", "destination": "/books/peace-sustainability-climate-security", "permanent": true },
+    { "source": "/book-engineering-peace-diplomacy.html", "destination": "/books/engineering-for-peace-and-diplomacy", "permanent": true },
+
+    { "source": "/new-book-community-development.html", "destination": "/blog/new-book-community-development", "permanent": true },
+    { "source": "/science-technology-engineering-for-peace.html", "destination": "/blog/science-technology-engineering-for-peace", "permanent": true },
+    { "source": "/role-of-engineers-in-development.html", "destination": "/blog/role-of-engineers-in-development", "permanent": true },
+    { "source": "/wash.html", "destination": "/blog/wash", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/assets/images/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    },
+    {
+      "source": "/pagefind/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
+      ]
+    }
+  ]
+}
