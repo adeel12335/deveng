@@ -673,3 +673,120 @@ h1, h2, h3, h4 { color: var(--ink); font-family: var(--serif); letter-spacing: -
   .footer-links a, .footer-contact a { display: inline-block; padding-block: 9px; }
   .footer-bottom a { display: inline-block; padding-block: 11px; }
 }
+
+/* CGSC: joint overview with Regena Systems Africa ------------------------- */
+.mist { background: var(--green-mist); }
+.kicker { display: block; margin: 0 0 18px; color: var(--green-dark); font-size: 13px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+.on-dark .kicker,
+.band .kicker { color: var(--orange); }
+.cgsc-hero-statement .motto { display: block; margin: 0 0 10px; color: var(--green-deep); font-family: var(--serif); font-size: clamp(24px, 2.3vw, 30px); font-weight: 700; line-height: 1.2; letter-spacing: 0; text-transform: none; }
+.cgsc-hero-statement .fivep { margin: 0 0 22px; color: var(--green-dark); font-size: 13px; font-weight: 800; letter-spacing: .18em; line-height: 1.6; text-transform: uppercase; }
+.sector-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.sector-list li { padding: 6px 12px; color: var(--green-dark); font-size: 13px; font-weight: 700; border: 1px solid var(--line); border-radius: 999px; }
+.partner-logo { display: flex; align-items: center; gap: 14px; margin-top: 26px; }
+.partner-logo img { width: 56px; height: 56px; flex: none; border-radius: 50%; }
+.partner-logo span { color: var(--muted); font-size: 13px; font-weight: 700; line-height: 1.4; }
+.band .partner-logo span { color: rgba(255,255,255,.7); }
+
+/* A hairline grid that works for any column count: the gap shows the background. */
+.card-grid { display: grid; grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 1px; margin: 0; padding: 0; list-style: none; background: var(--line); border: 1px solid var(--line); }
+.card-grid > * { min-width: 0; padding: 30px 26px 34px; background: #fff; }
+.card-grid .card-num { display: block; margin-bottom: 14px; color: var(--orange); font-family: var(--serif); font-size: 30px; font-weight: 700; line-height: 1; }
+.card-grid h3 { margin: 0 0 10px; font-size: 21px; line-height: 1.15; }
+.card-grid p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.card-grid .owner,
+.pipeline .owner { display: inline-block; margin-top: 14px; padding: 4px 10px; color: var(--green-dark); font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; background: var(--green-soft); border-radius: 999px; }
+.card-grid .tag { display: block; margin-bottom: 10px; color: var(--orange-dark); font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+.section-title-row + .card-grid,
+.editorial-row + .card-grid { margin-top: 42px; }
+.editorial-row .nexus-list { margin: 0 0 24px; padding: 0; list-style: none; }
+.editorial-row .nexus-list li { padding: 14px 0; border-top: 1px solid var(--line); }
+.editorial-row .nexus-list li:last-child { border-bottom: 1px solid var(--line); }
+.editorial-row .nexus-list strong { color: var(--green-deep); }
+.pressure-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 24px; margin: 0 0 28px; padding: 0; list-style: none; counter-reset: pressure; }
+.pressure-list li { counter-increment: pressure; display: flex; align-items: baseline; gap: 12px; color: var(--ink); font-weight: 700; }
+.pressure-list li::before { content: counter(pressure, decimal-leading-zero); color: var(--orange); font-family: var(--serif); font-size: 20px; font-weight: 700; }
+.source-note { margin: 22px 0 0; color: var(--muted); font-size: 13px; }
+
+/* Dark bands: who we are, how we work together, the site, the invitation */
+.band { padding: clamp(64px, 7vw, 96px) 0; color: #fff; background: var(--green-deep); }
+.band > .shell > h2 { max-width: 20ch; margin: 0; color: #fff; font-size: clamp(38px, 4.2vw, 58px); line-height: 1; }
+.band > .shell > p { max-width: 62ch; margin: 22px 0 0; color: rgba(255,255,255,.72); font-size: 17px; line-height: 1.7; }
+.band .mission-grid { margin-top: 48px; }
+.mission-grid h3 { margin: 18px 0 0; color: #fff; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; }
+.mission-grid ul { display: grid; gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; }
+.mission-grid li { position: relative; padding-left: 22px; color: rgba(255,255,255,.78); font-size: 15px; line-height: 1.5; }
+.mission-grid li::before { content: ""; position: absolute; top: .65em; left: 0; width: 10px; height: 2px; background: var(--orange); }
+.mission-grid .where { display: block; margin: 18px 0 0; color: rgba(255,255,255,.5); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+.pipeline { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; margin: 42px 0 0; padding: 0; list-style: none; counter-reset: step; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.2); }
+.pipeline li { counter-increment: step; min-width: 0; padding: 22px 16px 24px; background: var(--green-deep); }
+.pipeline li::before { content: counter(step, decimal-leading-zero); display: block; color: var(--orange); font-family: var(--serif); font-size: 16px; font-weight: 700; }
+.pipeline h3 { margin: 10px 0 0; color: #fff; font-size: 18px; line-height: 1.2; }
+.pipeline .owner { color: #fff; background: rgba(255,255,255,.12); }
+.callout { margin: 38px 0 0; padding: 26px 30px; border-left: 4px solid var(--orange); background: rgba(255,255,255,.06); }
+.callout strong { display: block; color: #fff; font-family: var(--serif); font-size: clamp(20px, 2vw, 24px); font-weight: 700; line-height: 1.3; }
+.callout p { max-width: 70ch; margin: 12px 0 0; color: rgba(255,255,255,.72); line-height: 1.6; }
+.callout.light { background: #fff; }
+.callout.light strong { color: var(--green-deep); }
+.callout.light p { color: var(--muted); }
+.site-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(46px, 8vw, 120px); align-items: start; }
+.site-grid h2 { max-width: 14ch; margin: 0; color: #fff; font-size: clamp(38px, 4.2vw, 58px); line-height: 1; }
+.site-grid > div > p { max-width: 58ch; margin: 0 0 26px; color: rgba(255,255,255,.72); font-size: 17px; line-height: 1.7; }
+.site-stat { display: flex; align-items: baseline; gap: 16px; margin: 32px 0 0; }
+.site-stat strong { color: var(--orange); font-family: var(--serif); font-size: clamp(72px, 8vw, 112px); font-weight: 700; line-height: .9; }
+.site-stat span { color: rgba(255,255,255,.7); font-size: 13px; font-weight: 800; letter-spacing: .16em; line-height: 1.5; text-transform: uppercase; }
+.site-points { margin: 0; padding: 0; list-style: none; }
+.site-points li { padding: 18px 0; border-top: 1px solid rgba(255,255,255,.22); }
+.site-points li:last-child { border-bottom: 1px solid rgba(255,255,255,.22); }
+.site-points strong { display: block; margin-bottom: 4px; color: #fff; font-size: 18px; }
+.site-points span { color: rgba(255,255,255,.68); font-size: 14px; }
+
+/* Methodology and services */
+.method-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 clamp(32px, 5vw, 72px); margin: 0; padding: 0; list-style: none; counter-reset: stage; }
+.method-list li { counter-increment: stage; display: grid; grid-template-columns: 54px 1fr; gap: 16px; padding: 20px 0; border-top: 1px solid var(--line); }
+.method-list li::before { content: counter(stage, decimal-leading-zero); color: var(--orange); font-family: var(--serif); font-size: 30px; font-weight: 700; line-height: 1; }
+.method-list h3 { margin: 0 0 6px; font-size: 19px; line-height: 1.2; }
+.method-list p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.service-rail ul { margin: 0; padding: 0; list-style: none; }
+.service-rail li { position: relative; padding: 8px 0 8px 18px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+.service-rail li::before { content: ""; position: absolute; top: 1.05em; left: 0; width: 8px; height: 2px; background: var(--orange); }
+
+/* Contacts and the closing invitation */
+.cgsc-contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 42px 0 0; }
+.cgsc-contacts article { padding: 26px 28px; background: #fff; border: 1px solid var(--line); }
+.cgsc-contacts h3 { margin: 0 0 4px; font-size: 20px; }
+.cgsc-contacts .org { display: block; margin-bottom: 14px; color: var(--muted); font-size: 13px; font-weight: 700; }
+.cgsc-contacts a { display: block; color: var(--green); font-size: 15px; font-weight: 800; line-height: 1.8; }
+.cta-band { background: var(--green-dark); }
+.cta-band > .shell > .lead { max-width: 60ch; margin: 26px 0 0; color: #fff; font-family: var(--serif); font-size: clamp(22px, 2.2vw, 28px); line-height: 1.4; }
+.cta-band > .shell > .close { color: #fff; font-weight: 700; }
+.cta-band .button { margin-top: 30px; }
+
+/* Books: publisher and retailer links */
+.book-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 28px; }
+.book-list-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; }
+.book-ext { color: var(--muted); font-size: 13px; font-weight: 800; }
+.book-ext:hover { color: var(--green); }
+
+/* Author: CV download */
+.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 30px; }
+.author-facts { margin: 0 0 24px; padding: 0; list-style: none; }
+.author-facts li { position: relative; padding: 9px 0 9px 20px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
+.author-facts li:last-child { border-bottom: 1px solid var(--line); }
+.author-facts li::before { content: ""; position: absolute; top: 1.15em; left: 0; width: 8px; height: 2px; background: var(--orange); }
+
+@media (max-width: 1000px) {
+  .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pipeline { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .site-grid { grid-template-columns: 1fr; gap: 42px; }
+  .method-list { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .card-grid > * { padding: 24px 20px 28px; }
+  .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pressure-list { grid-template-columns: 1fr; }
+  .cgsc-contacts { grid-template-columns: 1fr; }
+  .callout { padding: 22px 20px; }
+}

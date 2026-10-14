@@ -53,7 +53,14 @@ export default async function BookPage({ params }) {
             </div>
             <h2>Description</h2>
             {book.body.map((para) => (<p key={para}>{para}</p>))}
-            <p><Link className="button button-green" href="/books">Back to All Books</Link></p>
+            {book.links?.length ? (
+              <div className="book-links">
+                {book.links.map((l) => (
+                  <a className="button button-green" key={l.href} href={l.href} target="_blank" rel="noreferrer">{l.label} <span aria-hidden="true">↗</span></a>
+                ))}
+              </div>
+            ) : null}
+            <p><Link className="text-link arrow-link" href="/books"><span>&larr;</span> Back to All Books</Link></p>
           </article>
         </div>
       </section>

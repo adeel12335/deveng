@@ -38,7 +38,12 @@ export default function BooksPage() {
                 <div className="book-list-copy">
                   <h2><Link href={`/books/${book.slug}`}>{book.title}</Link></h2>
                   <p>{book.blurb}</p>
-                  <Link className="text-link arrow-link" href={`/books/${book.slug}`}>View book <span>&rarr;</span></Link>
+                  <div className="book-list-links">
+                    <Link className="text-link arrow-link" href={`/books/${book.slug}`}>View book <span>&rarr;</span></Link>
+                    {book.links?.[0] ? (
+                      <a className="book-ext" href={book.links[0].href} target="_blank" rel="noreferrer">{book.links.length > 1 ? 'Where to buy' : 'Publisher page'} <span aria-hidden="true">↗</span></a>
+                    ) : null}
+                  </div>
                 </div>
               </Reveal>
             ))}

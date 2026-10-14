@@ -122,6 +122,7 @@ export function bookJsonLd(book) {
     author: { '@id': `${SITE_URL}/#bernard-amadei` },
     ...(publisher ? { publisher: { '@type': 'Organization', name: publisher } } : {}),
     ...(year ? { datePublished: year } : {}),
+    ...(book.links?.length ? { sameAs: book.links.map((l) => l.href) } : {}),
   };
 }
 

@@ -23,6 +23,10 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
     },
     {
+      "source": "/assets/docs/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    },
+    {
       "source": "/pagefind/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
     },

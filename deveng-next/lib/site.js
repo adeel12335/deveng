@@ -8,8 +8,11 @@ export const site = {
   email: 'bamadei@gmail.com',
   phone: '303-929-8167',
   phoneHref: '+13039298167',
-  address: ['Bernard Amadei', 'Common Ground Solutions LLC', '2536 Columbine Circle', 'Lafayette, CO 80026'],
+  address: ['Bernard Amadei', 'Common Ground Solutions Center, LLC', '2536 Columbine Circle', 'Lafayette, CO 80026'],
   website: 'https://www.deveng.org/',
+  // Bernard's academic CV, posted at his request. Replace the PDF in place so the URL stays stable.
+  cv: '/assets/docs/bernard-amadei-academic-cv.pdf',
+  cvLabel: 'Academic CV (PDF, October 2026)',
 };
 
 export const books = [
@@ -22,6 +25,7 @@ export const books = [
     blurb: "A framework for engineers working on small-scale projects in developing communities, combining development practice, engineering project management and systems thinking.",
     metaTitle: "Engineering for Sustainable Human Development | Development Engineering",
     meta: ["Bernard Amadei", "ASCE Press • 2014"],
+    links: [{ label: "Publisher page (ASCE Library)", href: "https://ascelibrary.org/doi/book/10.1061/9780784413531" }],
     body: [
       "The book addresses the role of engineering in poverty reduction and human development. It presents an integrative framework for small-scale community projects that combines development practice, engineering project management and systems thinking.",
       "The framework is designed for projects that must be technically sound while also fitting their social, environmental and economic context.",
@@ -50,6 +54,10 @@ export const books = [
     blurb: "A two-volume systems-based methodology for managing and allocating community water, energy, land and food resources.",
     metaTitle: "A Systems Approach to Modeling the Water-Energy-Land-Food Nexus | Development Engineering",
     meta: ["Bernard Amadei", "Momentum Press • 2019"],
+    links: [
+      { label: "Volume I on Amazon", href: "https://www.amazon.com/Systems-Approach-Modeling-Water-Energy-Land-Food-Nexus/dp/194708352X" },
+      { label: "Volume II on Amazon", href: "https://www.amazon.com/Systems-Approach-Modeling-Water-Energy-Land-Food-Nexus/dp/1947083546" },
+    ],
     body: [
       "Water, energy, land and food are treated as interdependent community resources rather than isolated sectors. The two-volume work develops a flexible systems-based methodology for understanding the nexus, modeling interactions and exploring intervention strategies.",
       "The approach is intended to support scientists, engineers, policymakers and decision-makers working with resource constraints and community development challenges.",
@@ -58,12 +66,13 @@ export const books = [
   {
     slug: "peace-sustainability-climate-security",
     shelfTitle: "The Peace-Sustainability-Climate Security Nexus",
-    title: "Navigating the complexity across the peace-sustainability-climate security nexus",
+    title: "Navigating the Complexity Across the Peace-Sustainability-Climate Security Nexus",
     subtitle: "A systems view of interdependent challenges",
     cover: "/assets/images/books/book-4.png",
     blurb: "A systems-oriented exploration of the relationships among peace, sustainability and climate security at community scale.",
-    metaTitle: "Navigating the complexity across the peace-sustainability-climate security nexus | Development Engineering",
+    metaTitle: "Navigating the Complexity Across the Peace-Sustainability-Climate Security Nexus | Development Engineering",
     meta: ["Bernard Amadei", "Routledge • 2023"],
+    links: [{ label: "Publisher page (Routledge)", href: "https://www.routledge.com/Navigating-the-Complexity-Across-the-Peace-Sustainability-Climate-Security/Amadei/p/book/9781032563381" }],
     body: [
       "This book explores how peace, sustainability and climate security interact at community scale. It argues for integrated, systems-aware approaches to human development and security rather than treating these challenges independently.",
       "The proposed perspective embraces complexity, context and multiple “good-enough” states rather than assuming a single universal solution.",
@@ -77,7 +86,8 @@ export const books = [
     cover: "/assets/images/books/book-5.png",
     blurb: "A 2025 book examining how the engineering profession can contribute to peacebuilding and diplomatic efforts in the 21st century.",
     metaTitle: "Engineering for Peace and Diplomacy | Development Engineering",
-    meta: ["Bernard Amadei", "Stanford Publ. Pte Ltd. • 2025"],
+    meta: ["Bernard Amadei", "Jenny Stanford Publishing • 2025"],
+    links: [{ label: "Publisher page (Jenny Stanford)", href: "https://www.jennystanford.com/9781003651680/engineering-for-peace-and-diplomacy/" }],
     body: [
       "This book examines the engineering profession’s role in advancing human development and security and contributing to peacebuilding and diplomatic efforts in conflict-affected, conflict-sensitive and fragile environments.",
       "It raises questions about collaboration across disciplines, professional principles, lifelong training and engineering’s responsibility to the local and global public good.",
